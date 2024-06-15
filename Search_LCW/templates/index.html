@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Set the viewport to ensure the page is responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>Find Compound Words</title>
+    <!-- Link to the CSS stylesheet for styling the page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Heading for the page -->
+    <h3>Find out the Longest and Second Longest Compound Words with time taken to process input file</h3>
+    <!-- Form for uploading files, with method set to POST and enctype for file upload -->
+    <form action="/" method="post" enctype="multipart/form-data">
+        <!-- Label and input for the first file upload -->
+        <label for="file1">Upload first file:</label>
+        <input type="file" id="file1" name="file1" required><br><br>
+        <!-- Label and input for the second file upload -->
+        <label for="file2">Upload second file:</label>
+        <input type="file" id="file2" name="file2" required><br><br>
+        <!-- Submit button for the form -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Check if longest1 and second_longest1 are defined and display results for the first file -->
+    {% if longest1 and second_longest1 %}
+        <h2>Results for File No-1</h2>
+        <p><strong>Longest compounded word of file1:</strong> {{ longest1 }}</p>
+        <p><strong>Second longest compounded word of file1:</strong> {{ second_longest1 }}</p>
+    {% endif %}
+
+    <!-- Check if longest2 and second_longest2 are defined and display results for the second file -->
+    {% if longest2 and second_longest2 %}
+        <h2>Results for File No-2</h2>
+        <p><strong>Longest compounded word of file 2:</strong> {{ longest2 }}</p>
+        <p><strong>Second longest compounded word of file 2:</strong> {{ second_longest2 }}</p>
+    {% endif %}
+
+    <!-- Check if time_taken is defined and display the time taken to process the files -->
+    {% if time_taken %}
+        <p><strong>Time taken to process the input files:</strong> {{ time_taken }} milliseconds</p>
+    {% endif %}
+</body>
+</html>
